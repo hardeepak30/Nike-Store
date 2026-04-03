@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nike India | Two Page Style Single File</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f4efe7;
+        --text: #181818;
+        --muted: #5a5a5a;
+        --accent: #ff6a00;
+        --accent-dark: #cf4d00;
+        --line: rgba(24, 24, 24, 0.08);
+        --panel: rgba(255, 248, 239, 0.9);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(255, 106, 0, 0.22), transparent 30%),
+          linear-gradient(135deg, #f4efe7 0%, #f7f3ed 40%, #efe4d3 100%);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 24px 7vw;
+        flex-wrap: wrap;
+      }
+
+      .brand,
+      h1,
+      h2,
+      h3 {
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.03em;
+      }
+
+      .brand {
+        font-size: 1.7rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .nav-links a,
+      .nav-links button {
+        font-weight: 600;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .btn,
+      .buy-now-btn,
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 14px 24px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+
+      .btn,
+      .buy-now-btn,
+      .nav-btn {
+        background: var(--text);
+        color: #fff;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--text);
+        color: var(--text);
+      }
+
+      .btn:hover,
+      .buy-now-btn:hover,
+      .nav-btn:hover,
+      .btn-outline:hover {
+        transform: translateY(-2px);
+      }
+
+      .section {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        color: var(--accent-dark);
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .home-page {
+        min-height: 100vh;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+        padding: 30px 7vw 80px;
+      }
+
+      .hero h1,
+      .shop-header h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        line-height: 0.95;
+        margin-bottom: 16px;
+      }
+
+      .hero p,
+      .shop-header p,
+      .section-heading p,
+      .product-card p,
+      .checkout-copy p,
+      .footer p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin: 28px 0 34px;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+      }
+
+      .hero-stats strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+
+      .hero-stats span {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .hero-card,
+      .feature-strip article,
+      .preview-card,
+      .product-card,
+      .checkout-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card {
+        overflow: hidden;
+        transform: rotate(-4deg);
+        position: relative;
+      }
+
+      .hero-card img {
+        height: 460px;
+        object-fit: cover;
+      }
+
+      .badge {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        background: var(--accent);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .hero-card-info {
+        padding: 24px;
+      }
+
+      .inline-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--accent-dark);
+        font-weight: 700;
+      }
+
+      .feature-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 0 7vw 80px;
+      }
+
+      .feature-strip article {
+        padding: 24px;
+      }
+
+      .section-heading {
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+
+      .section-heading h2,
+      .checkout-copy h2 {
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        margin-bottom: 12px;
+      }
+
+      .collection-preview {
+        padding-bottom: 90px;
+      }
+
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .preview-card {
+        overflow: hidden;
+      }
+
+      .preview-card img {
+        height: 320px;
+        object-fit: cover;
+      }
+
+      .preview-card div {
+        padding: 20px;
+      }
+
+      .campaign {
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 24px;
+        align-items: stretch;
+        padding-bottom: 90px;
+      }
+
+      .quote-card {
+        min-height: 320px;
+        border-radius: 24px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 30px;
+        color: #fff;
+        background:
+          linear-gradient(135deg, rgba(17, 17, 17, 0.92), rgba(57, 57, 57, 0.92)),
+          url("https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80")
+            center/cover;
+        box-shadow: var(--shadow);
+      }
+
+      .quote-card p {
+        font-size: clamp(1.5rem, 4vw, 2.7rem);
+        line-height: 1.15;
+      }
+
+      .quote-card span {
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .shop-page {
+        padding-top: 20px;
+        padding-bottom: 80px;
+      }
+
+      .shop-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+        padding-top: 30px;
+        padding-bottom: 50px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .product-card {
+        padding: 18px;
+      }
+
+      .product-card img {
+        height: 260px;
+        object-fit: cover;
+        border-radius: 18px;
+        margin-bottom: 18px;
+      }
+
+      .product-card h3 {
+        font-size: 1.7rem;
+      }
+
+      .product-card strong {
+        display: block;
+        margin: 14px 0 16px;
+        color: var(--accent-dark);
+        font-size: 1.2rem;
+      }
+
+      .checkout-section {
+        padding-top: 70px;
+      }
+
+      .checkout-card {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 28px;
+        padding: 28px;
+      }
+
+      .checkout-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .checkout-form input,
+      .checkout-form textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(24, 24, 24, 0.15);
+        background: #fffdf8;
+        font: inherit;
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 30px 7vw 40px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .toast {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: #111;
+        color: #fff;
+        padding: 16px 20px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .campaign,
+        .checkout-card {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-strip,
+        .preview-grid,
+        .product-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .shop-header,
+        .footer {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .hero-card {
+          transform: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav,
+        .nav-links,
+        .hero-actions,
+        .hero-stats {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .feature-strip,
+        .preview-grid,
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card img {
+          height: 340px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="homePage" class="home-page">
+      <nav class="nav">
+        <a class="brand" href="#">NIKE INDIA</a>
+        <div class="nav-links">
+          <a href="#collection">Collection</a>
+          <a href="#campaign">Campaign</a>
+          <button class="nav-btn" onclick="showShopPage()">Shop Now</button>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <span class="eyebrow">Spring Summer 2026</span>
+          <h1>Run the street. Own the spotlight.</h1>
+          <p>
+            Explore bold Nike styles built for everyday movement, fast comfort,
+            and standout energy. This first section works like your advertisement page.
+          </p>
+          <div class="hero-actions">
+            <button class="btn" onclick="showShopPage()">Shop Now</button>
+            <a class="btn btn-outline" href="#campaign">Watch Campaign</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong>50K+</strong>
+              <span>Happy sneaker lovers</span>
+            </div>
+            <div>
+              <strong>24 hrs</strong>
+              <span>Dispatch in India</span>
+            </div>
+            <div>
+              <strong>4.8/5</strong>
+              <span>Customer rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <span class="badge">Limited Drop</span>
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80"
+            alt="Nike shoe"
+          />
+          <div class="hero-card-info">
+            <h2>Air Max Pulse</h2>
+            <p>Comfort-tuned cushioning for all-day city motion.</p>
+            <button class="btn" onclick="showShopPage()">See all shoes</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-strip">
+        <article>
+          <h3>Free Shipping</h3>
+          <p>Available across India on selected launches and prepaid orders.</p>
+        </article>
+        <article>
+          <h3>Easy Returns</h3>
+          <p>Simple exchange support for the right fit and fresh confidence.</p>
+        </article>
+        <article>
+          <h3>Secure Checkout</h3>
+          <p>Fast purchase flow with a direct buy confirmation on every item.</p>
+        </article>
+      </section>
+
+      <section class="section collection-preview" id="collection">
+        <div class="section-heading">
+          <span class="eyebrow">Ad Spotlight</span>
+          <h2>New-season icons built for India</h2>
+          <p>
+            This is your homepage advertisement area. Customers can enjoy the story
+            here and then go to the shopping section.
+          </p>
+        </div>
+
+        <div class="preview-grid">
+          <article class="preview-card">
+            <img
+              src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=900&q=80"
+              alt="Air Jordan"
+            />
+            <div>
+              <h3>Air Jordan Street</h3>
+              <p>Classic basketball DNA with premium everyday comfort.</p>
+            </div>
+          </article>
+
+          <article class="preview-card">
+            <img
+              src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=900&q=80"
+              alt="Blazer"
+            />
+            <div>
+              <h3>Blazer Edge</h3>
+              <p>Retro-inspired style for campus, city walks, and casual fits.</p>
+            </div>
+          </article>
+
+          <article class="preview-card">
+            <img
+              src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=900&q=80"
+              alt="Crater"
+            />
+            <div>
+              <h3>Crater Flex</h3>
+              <p>Lightweight design with a modern, sporty look.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section campaign" id="campaign">
+        <div>
+          <span class="eyebrow">Campaign Film</span>
+          <h2>Be fast. Be fearless. Be first.</h2>
+          <p>
+            Your first page is now focused on the advertisement part only. Use the
+            button below to move into the shop section and buy shoes in Indian currency.
+          </p>
+          <br />
+          <button class="btn" onclick="showShopPage()">Explore The Shop</button>
+        </div>
+
+        <div class="quote-card">
+          <div>
+            <p>“Made for daily hustle, built for standout moments.”</p>
+            <span>Nike India Campaign</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="shopPage" class="shop-page hidden">
+      <nav class="nav">
+        <a class="brand" href="#" onclick="showHomePage()">NIKE INDIA</a>
+        <div class="nav-links">
+          <button onclick="showHomePage()">Advertisement</button>
+          <a href="#products">Products</a>
+          <a href="#checkout">Buy</a>
+        </div>
+      </nav>
+
+      <section class="section shop-header">
+        <div>
+          <span class="eyebrow">Shop Page</span>
+          <h1>Explore every shoe in INR</h1>
+          <p>
+            All buttons work here. Customers can browse, choose a shoe, and
+            place a simple order in Indian Rupees.
+          </p>
+        </div>
+        <a class="btn" href="#products">View Collection</a>
+      </section>
+
+      <section class="section" id="products">
+        <div class="section-heading">
+          <span class="eyebrow">Best Sellers</span>
+          <h2>Choose your perfect pair</h2>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card" data-name="Air Jordan Street" data-price="12999">
+            <img
+              src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=900&q=80"
+              alt="Air Jordan"
+            />
+            <h3>Air Jordan Street</h3>
+            <p>Classic court style with premium comfort.</p>
+            <strong>₹12,999</strong>
+            <button class="buy-now-btn">Buy Now</button>
+          </article>
+
+          <article class="product-card" data-name="Blazer Edge" data-price="8999">
+            <img
+              src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=900&q=80"
+              alt="Blazer"
+            />
+            <h3>Blazer Edge</h3>
+            <p>Retro profile made for daily style.</p>
+            <strong>₹8,999</strong>
+            <button class="buy-now-btn">Buy Now</button>
+          </article>
+
+          <article class="product-card" data-name="Crater Flex" data-price="9499">
+            <img
+              src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=900&q=80"
+              alt="Crater"
+            />
+            <h3>Crater Flex</h3>
+            <p>Lightweight support for fast movement.</p>
+            <strong>₹9,499</strong>
+            <button class="buy-now-btn">Buy Now</button>
+          </article>
+
+          <article class="product-card" data-name="Hippie Sprint" data-price="10499">
+            <img
+              src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=900&q=80"
+              alt="Hippie"
+            />
+            <h3>Hippie Sprint</h3>
+            <p>Modern runner with soft step-in feel.</p>
+            <strong>₹10,499</strong>
+            <button class="buy-now-btn">Buy Now</button>
+          </article>
+
+          <article class="product-card" data-name="Force One Rise" data-price="11299">
+            <img
+              src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=80"
+              alt="Force"
+            />
+            <h3>Force One Rise</h3>
+            <p>Bold streetwear look with durable grip.</p>
+            <strong>₹11,299</strong>
+            <button class="buy-now-btn">Buy Now</button>
+          </article>
+
+          <article class="product-card" data-name="Air Max Pulse" data-price="11999">
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80"
+              alt="Air Max"
+            />
+            <h3>Air Max Pulse</h3>
+            <p>Responsive cushioning for daily comfort.</p>
+            <strong>₹11,999</strong>
+            <button class="buy-now-btn">Buy Now</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section checkout-section" id="checkout">
+        <div class="checkout-card">
+          <div class="checkout-copy">
+            <span class="eyebrow">Selected Product</span>
+            <h2 id="selectedName">Air Jordan Street</h2>
+            <p id="selectedPrice">₹12,999</p>
+            <p>
+              Pick any product above and press Buy Now. The selected shoe details
+              will update here automatically.
+            </p>
+          </div>
+
+          <form class="checkout-form" id="checkoutForm">
+            <label for="customerName">Full Name</label>
+            <input id="customerName" type="text" required />
+
+            <label for="customerPhone">Phone Number</label>
+            <input id="customerPhone" type="tel" required />
+
+            <label for="customerAddress">Address</label>
+            <textarea id="customerAddress" rows="4" required></textarea>
+
+            <button class="btn full-width" type="submit">Place Order</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <div>
+        <h3>NIKE INDIA</h3>
+        <p>Performance, streetwear, and bold new season energy.</p>
+      </div>
+      <div class="footer-links">
+        <button onclick="showHomePage()">Home</button>
+        <button onclick="showShopPage()">Shop</button>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      const homePage = document.getElementById("homePage");
+      const shopPage = document.getElementById("shopPage");
+      const selectedName = document.getElementById("selectedName");
+      const selectedPrice = document.getElementById("selectedPrice");
+      const checkoutForm = document.getElementById("checkoutForm");
+      const buyButtons = document.querySelectorAll(".buy-now-btn");
+      const toast = document.getElementById("toast");
+
+      function showHomePage() {
+        homePage.classList.remove("hidden");
+        shopPage.classList.add("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showShopPage() {
+        homePage.classList.add("hidden");
+        shopPage.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function formatINR(amount) {
+        return new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 0,
+        }).format(amount);
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(showToast.timeoutId);
+        showToast.timeoutId = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      buyButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".product-card");
+          const name = card.dataset.name;
+          const price = Number(card.dataset.price);
+
+          selectedName.textContent = name;
+          selectedPrice.textContent = formatINR(price);
+
+          document.getElementById("checkout").scrollIntoView({
+            behavior: "smooth",
+          });
+
+          showToast(name + " selected");
+        });
+      });
+
+      checkoutForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const customerName = document.getElementById("customerName").value.trim();
+        const productName = selectedName.textContent;
+
+        alert(
+          "Thank you, " +
+            customerName +
+            "! Your order for " +
+            productName +
+            " has been placed successfully."
+        );
+
+        showToast("Order placed successfully");
+        checkoutForm.reset();
+      });
+    </script>
+  </body>
+</html>
