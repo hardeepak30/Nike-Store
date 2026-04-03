@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hardeepak| Two Page Style Single File</title>
+    <title>Nike India | Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -470,7 +470,7 @@
   <body>
     <div id="homePage" class="home-page">
       <nav class="nav">
-        <a class="brand" href="#">Nike by deep</a>
+        <a class="brand" href="#">NIKE INDIA</a>
         <div class="nav-links">
           <a href="#collection">Collection</a>
           <a href="#campaign">Campaign</a>
@@ -740,6 +740,7 @@
 
     <div class="toast" id="toast"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
       const homePage = document.getElementById("homePage");
       const shopPage = document.getElementById("shopPage");
@@ -748,6 +749,8 @@
       const checkoutForm = document.getElementById("checkoutForm");
       const buyButtons = document.querySelectorAll(".buy-now-btn");
       const toast = document.getElementById("toast");
+
+      emailjs.init("m30il4TtKf4cwl2fo");
 
       function showHomePage() {
         homePage.classList.remove("hidden");
@@ -795,22 +798,44 @@
         });
       });
 
-      checkoutForm.addEventListener("submit", (event) => {
+      checkoutForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const customerName = document.getElementById("customerName").value.trim();
+        const customerPhone = document.getElementById("customerPhone").value.trim();
+        const customerAddress = document.getElementById("customerAddress").value.trim();
         const productName = selectedName.textContent;
+        const productPrice = selectedPrice.textContent;
 
-        alert(
-          "Thank you, " +
-            customerName +
-            "! Your order for " +
-            productName +
-            " has been placed successfully."
-        );
+        const templateParams = {
+          customer_name: customerName,
+          customer_phone: customerPhone,
+          customer_address: customerAddress,
+          product_name: productName,
+          product_price: productPrice
+        };
 
-        showToast("Order placed successfully");
-        checkoutForm.reset();
+        try {
+          await emailjs.send(
+            "service_u3u4bq8",
+            "template_01sfh7g",
+            templateParams
+          );
+
+          alert(
+            "Thank you, " +
+              customerName +
+              "! Your order for " +
+              productName +
+              " has been placed successfully."
+          );
+
+          showToast("Order placed and email sent");
+          checkoutForm.reset();
+        } catch (error) {
+          console.error(error);
+          alert("Email sending failed. Please check your EmailJS template settings.");
+        }
       });
     </script>
   </body>
